@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, SafeAreaView  } from "react-native";
 import Fire, { getCom} from "../Fire";
 
 export default class NotificationScreen extends React.Component {
@@ -8,15 +8,17 @@ export default class NotificationScreen extends React.Component {
         super(props);
       }
       state = {
+        details:{},
         loading: false,
         limit: 2,
         post: [],
-        comment: [],
+        comments: [],
       };
       
       onPostsReceived = (post) => {
         try {
-          this.setState({ post: post });
+          this.setState({ details: post.details,
+                         comments: post.comments });
           console.log("***************");
           console.log(post);
           console.log("***************");
@@ -33,17 +35,33 @@ export default class NotificationScreen extends React.Component {
       
       
     render() {
-        return (
-            <View style={styles.container}>
-            <Text> {JSON.stringify(this.state.post)}</Text>
-                {/* <FlatList
+    
+        const {details, comments} = this.state
         
-          data={this.state.post}
+        return (
+            <SafeAreaView style={{marginTop:50, flex:1}}>
+            <View style={styles.container}>
+            <View style={{alignItems:'center'}}><Text style={{alignItems:'center',fontSize:22, fontWeight:'bold'}}>Post Details</Text></View>
+            <View>
+            <Text style={{margin: 10}}>Mood <Text style={{fontWeight:'bold'}}>{ details.mood}</Text></Text>
+            <Text style={{margin: 10}}>Body <Text style={{fontWeight:'bold'}}>{ details.text}</Text></Text>
+            <Text style={{margin: 10}}>comments <Text style={{fontWeight:'bold'}}>{ details.commentCount}</Text></Text>
+            <Text style={{margin: 10}}>Likes <Text style={{fontWeight:'bold'}}>{ details.likeCount}</Text></Text>
+
+            </View>
+            
+            <View style={{alignItems:'center'}}><Text style={{alignItems:'center',fontSize:22, fontWeight:'bold'}}>Comments</Text></View>
+
+                <FlatList
+        
+          data={comments}
           //extraData={this.state}
           renderItem={({ item }) => 
                    {   return(<View>
-                              <Text>ID: {item.postId.trim()}</Text>
-                              <Text>{item.body}</Text>
+                         <Text style={{margin: 10}}>Body <Text style={{fontWeight:'bold'}}>{ item.body}</Text></Text>
+                         <Text style={{margin: 10}}>UserHandle <Text style={{fontWeight:'bold'}}>{ item.userHandle}</Text></Text>
+                         <Text style={{margin: 10}}>PostId <Text style={{fontWeight:'bold'}}>{ item.postId}</Text></Text>
+
                              </View>)
                     
                     }
@@ -51,8 +69,9 @@ export default class NotificationScreen extends React.Component {
           //keyExtractor={(item, index) => String(index)}
 
          
-        /> */}
+        />
             </View>
+            </SafeAreaView>
         );
     }
 }
@@ -60,7 +79,5 @@ export default class NotificationScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
     }
 });
