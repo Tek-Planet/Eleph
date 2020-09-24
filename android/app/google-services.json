@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "403017984463",
+    "firebase_url": "https://eleph-6fee9.firebaseio.com",
+    "project_id": "eleph-6fee9",
+    "storage_bucket": "eleph-6fee9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:403017984463:android:b6680fabb10b4e2aa28aba",
+        "android_client_info": {
+          "package_name": "com.eleph"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "403017984463-vrm7q0cc90g7vc2lqsl31jlf18sdhb52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE3W7rN6R_O-GLJpZISmWfG-GiJF91LDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "403017984463-vrm7q0cc90g7vc2lqsl31jlf18sdhb52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
